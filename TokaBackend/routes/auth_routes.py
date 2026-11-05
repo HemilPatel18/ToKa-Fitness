@@ -90,10 +90,18 @@ def login_user(form: LoginForm):
  
     # Check if the user exists
     found_user = users.find_one({"email": form.email})
+    stored_password = found_user.get("password") if found_user else None
+    valid_password = False
+    if isinstance(stored_password, str) and stored_password.startswith("$2"):
+        try:
+            valid_password = bcrypt.checkpw(
+                form.password.encode("utf-8"),
+                stored_password.encode("utf-8")
+            )
+        except ValueError:
+            valid_password = False
  
-    if found_user is None or not bcrypt.checkpw(
-        form.password.encode("utf-8"),
-        found_user["password"].encode("utf-8")):
+    if not valid_password:
         raise HTTPException(
             status_code=401,
             detail="Invalid Credentials"
