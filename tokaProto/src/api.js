@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const backend_url = import.meta.env.VITE_BACKEND_URL || "http://localhost:8001";
+export const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:8001";
 
 const api = axios.create({
-    baseURL: backend_url
+    baseURL: backendUrl
 });
 
 export async function RegisterTest(name, email, password, confirmPassword ) {

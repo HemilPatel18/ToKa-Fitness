@@ -3,7 +3,7 @@ import ChatIdentifier from '../../components/ChatIdentifier/ChatIdentifier'
 import ChatMessage from '../../components/ChatMessage/ChatMessage'
 import { ChevronRight } from '@boxicons/react'
 
-import api from '../../api'
+import api, { backendUrl } from '../../api'
 
 import './Chat.css'
 
