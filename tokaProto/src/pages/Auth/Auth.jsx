@@ -4,13 +4,7 @@ import { CheckCircle } from '@boxicons/react'
 
 import './Auth.css'
 import InputBox from '../../components/InputBox/InputBox'
-import axios from 'axios'
-
-const backend_url = "http://127.0.0.1:8001"
-
-const api = axios.create({
-    baseURL: backend_url
-});
+import api from '../../api'
 
 export default function Auth() {
     const [selectedForm, setSelectedForm] = useState("login")
@@ -43,7 +37,7 @@ function LoginForm({ toggleForm }) {
         e.preventDefault();
 
         try {
-            const response = await axios.post(`${backend_url}/auth/login`, {
+            const response = await api.post('/auth/login', {
                 email: email,
                 password: password
             })
@@ -136,7 +130,7 @@ function RegisterForm({ toggleForm }) {
 
         try {
             // await addUser({ fullname, email, password, confirmPassword });
-            const response = await axios.post(`${backend_url}/auth/register`, {
+            const response = await api.post('/auth/register', {
                 name: fullname,
                 initials: initials,
                 email: email,

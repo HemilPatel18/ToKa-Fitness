@@ -3,15 +3,9 @@ import ChatIdentifier from '../../components/ChatIdentifier/ChatIdentifier'
 import ChatMessage from '../../components/ChatMessage/ChatMessage'
 import { ChevronRight } from '@boxicons/react'
 
-import axios from 'axios'
+import api from '../../api'
 
 import './Chat.css'
-
-const backend_url = 'http://127.0.0.1:8001'
-
-const api = axios.create({
-    baseURL: backend_url
-})
 
 export default function Chat() {
     const [message, setMessage] = useState('')
