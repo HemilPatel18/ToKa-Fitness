@@ -1,12 +1,22 @@
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
 from fastapi import FastAPI
-from routes.auth_routes import auth_router
 from fastapi.middleware.cors import CORSMiddleware
+from routes.auth_routes import auth_router
+
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+        origin.strip()
+        for origin in os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
+        if origin.strip()
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
