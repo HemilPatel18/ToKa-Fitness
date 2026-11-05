@@ -147,8 +147,8 @@ export default function Chat() {
             return
         }
 
-        const websocketProtocol = backend_url.startsWith('https') ? 'wss' : 'ws'
-        const websocketHost = backend_url.replace(/^https?:\/\//, '')
+        const websocketProtocol = backendUrl.startsWith('https') ? 'wss' : 'ws'
+        const websocketHost = backendUrl.replace(/^https?:\/\//, '')
         const websocket = new WebSocket(
             `${websocketProtocol}://${websocketHost}/auth/ws/chat?chat_name=${encodeURIComponent(selectedChat.name)}&user_email=${encodeURIComponent(currentUserEmail)}`
         )
