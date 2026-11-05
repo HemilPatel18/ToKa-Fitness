@@ -1,0 +1,46 @@
+.message-row {
+	display: flex;
+	align-items: flex-end;
+	gap: 9px;
+	max-width: 72%;
+}
+
+.message-row--outgoing {
+	align-self: flex-end;
+}
+
+.message-content {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.message-row--outgoing .message-content {
+	align-items: flex-end;
+}
+
+.message-bubble {
+	padding: 12px 15px;
+	border-radius: 15px 15px 15px 3px;
+	color: #214258;
+	background: #eff6fa;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.message-row--outgoing .message-bubble {
+	border-radius: 15px 15px 3px 15px;
+	color: var(--white);
+	background: var(--blue);
+}
+
+.message-content time {
+	color: #91a6b5;
+	font-size: 11px;
+}
+
+.avatar--small {
+	width: 28px;
+	height: 28px;
+	font-size: 9px;
+}

@@ -1,0 +1,12 @@
+.cta {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+    text-decoration: none;
+
+    background-color: var(--bg);
+
+    /* border: 2px solid #000000; */
+    border-radius: 10px;
+    padding: 10px 20px;
+}

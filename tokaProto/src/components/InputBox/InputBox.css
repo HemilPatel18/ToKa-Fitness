@@ -1,0 +1,20 @@
+.input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    > span {
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    > input {
+        height: 40px;
+
+        border: 2px solid var(--yellow);
+        border-radius: 5px;
+
+        font-size: 18px;
+        text-indent: 10px;
+    }
+}

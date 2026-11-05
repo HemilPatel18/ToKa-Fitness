@@ -1,0 +1,52 @@
+.conversation {
+	width: 100%;
+	gap: 11px;
+	padding: 12px 10px;
+	border: 0;
+	border-radius: 10px;
+	text-align: left;
+	background: transparent;
+}
+
+.conversation--active {
+	background: #dff1fc;
+}
+
+.avatar {
+	display: inline-grid;
+	flex: 0 0 auto;
+	place-items: center;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	color: #075a91;
+	background: #bce4fa;
+	font-size: 12px;
+	font-weight: 800;
+}
+
+.conversation-copy {
+	display: flex;
+	flex: 1;
+	min-width: 0;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.conversation-copy strong,
+.conversation-copy span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.conversation-copy strong {
+	color: var(--black);
+	font-size: 14px;
+}
+
+.conversation-copy span,
+.conversation time {
+	color: #6e8494;
+	font-size: 12px;
+}

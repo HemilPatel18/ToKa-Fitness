@@ -1,0 +1,154 @@
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    height: 90vh;
+    padding: 20px;
+
+    background-color: #D7E8F7;
+
+    > .left {
+        flex: 1;
+    }
+    
+    > .right {
+        flex: 1;
+    }
+
+}
+
+.auth-page .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+
+    padding: 10px; 
+    border-radius: 30px;
+
+    background-image: url('../../assets/image1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    > .top-info {
+        width: fit-content;
+
+        padding: 10px;
+        border-radius: 20px;
+
+        color: var(--blue);
+        font-weight: 600;
+        background-color: var(--white);
+    }
+
+    > .bottom-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+
+        padding: 10px;
+        border-radius: 20px;
+
+        background-color: var(--dark-blue_translucent);
+        backdrop-filter: blur(10px);
+    }
+} 
+
+.auth-page .left .bottom-info .line {
+    height: 2px;
+    background-color: var(--white);
+}
+
+.auth-page .left .bottom-info .title {
+
+    > h1 {
+        color: var(--white);
+        font-size: 50px;
+    }
+
+    > p {
+        color: var(--white);
+    }
+}
+
+.bottom-info .list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bottom-info .list li {
+    display: flex;
+    align-items: center;
+
+    color: var(--white);
+
+    > svg {
+        color: var(--white);
+    }
+}
+
+.auth-page .right form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    > .welcome-text {
+        color: var(--blue);
+        font-weight: 700;
+    }
+
+    > .inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+.auth-page .right form .agreement {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.right form .agreement span a {
+    color: var(--blue);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+form .formCta {
+    padding: 10px;
+
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 700;
+
+    background-color: var(--blue);
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+form .form-actions {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    gap: 0px;
+
+    > button {
+        color: var(--blue);
+        font-size: 20px;
+        font-weight: 700;
+
+        background: transparent;
+        border: none;
+    }
+}

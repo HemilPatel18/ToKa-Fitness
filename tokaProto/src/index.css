@@ -1,0 +1,46 @@
+/* the cinzel font */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+:root {
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+  --heading-font: cinzel;
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--sans);
+
+  /* theme colors */
+  --blue: #0D8CE9;
+  --dark-blue_translucent: rgba(20, 38, 59, 0.72);
+  --black: #0E1318;
+  --white: #FFFFFF;
+}
+
+
+* {
+  /* remove all default margins and change border calculation */
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button {
+  /* set every button to have a finger pointer by default when you hover it so we dont have to keep changing it manually */
+  cursor: pointer;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.main-content {
+  flex: 1;
+}
