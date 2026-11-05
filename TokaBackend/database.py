@@ -6,8 +6,12 @@ from pymongo import MongoClient
 
 load_dotenv(Path(__file__).resolve().parent / ".env")
 
+mongo_uri = os.getenv("MONGO_URI")
+if not mongo_uri:
+    raise RuntimeError("MONGO_URI is not configured")
+
 client = MongoClient(
-    os.getenv("MONGO_URI", "mongodb://localhost:27017"),
+    mongo_uri,
     serverSelectionTimeoutMS=int(os.getenv("MONGO_SERVER_SELECTION_TIMEOUT_MS", "5000")),
 )
 
