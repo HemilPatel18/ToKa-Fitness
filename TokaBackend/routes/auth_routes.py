@@ -55,12 +55,12 @@ def register_user(form: RegisterForm):
             detail="User with this email already exists"
         )
  
-    try:
-        password_hash = bcrypt.hashpw(
-            form.password.encode("utf-8"),
-            bcrypt.gensalt()
-        ).decode("utf-8")
+    password_hash = bcrypt.hashpw(
+        form.password.encode("utf-8"),
+        bcrypt.gensalt()
+    ).decode("utf-8")
 
+    try:
         users.insert_one({
             "email": form.email,
             "password": password_hash,
@@ -72,6 +72,18 @@ def register_user(form: RegisterForm):
             status_code=403,
             detail="User with this email already exists"
         )
+
+    chats.update_one(
+        {"name": "Toka Community", "chat_type": "group"},
+        {
+            "$setOnInsert": {
+                "initials": "TC",
+                "messages": [],
+            },
+            "$addToSet": {"members": form.email},
+        },
+        upsert=True,
+    )
  
     # Hash the password
  

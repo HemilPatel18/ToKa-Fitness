@@ -2,9 +2,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 200px;
+    gap: clamp(16px, 5vw, 80px);
 
-    height: 60vh;
+    min-height: clamp(420px, 60vh, 700px);
+    padding: clamp(24px, 6vw, 80px);
 
     /* background-color: #808080; */
     background-image: url('../../assets/image1.jpg');
@@ -21,7 +22,7 @@
     flex-direction: column;
     gap: 20px;
     
-    width: 550px;
+    width: min(100%, 550px);
 
     padding: 20px;
     border-radius: 20px;
@@ -39,8 +40,16 @@
 
     > .row {
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
     }
+}
+
+.info-banner .image {
+    background-image: url('../../assets/pexels-emanuel-pedro-1266938328-32610333.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .box .row .cta {
@@ -50,7 +59,7 @@
 .hero-banner .box .row {
 
     > p {
-        width: 250px;
+        width: min(100%, 250px);
         font-weight: 800;
     }
 }
@@ -59,9 +68,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    flex-wrap: wrap;
+    gap: clamp(20px, 4vw, 40px);
 
     min-height: 60vh;
+    padding: clamp(24px, 5vw, 64px);
 
     background-color: #EAF4FF;
 }
@@ -71,8 +82,10 @@
     flex-direction: column;
     gap: 10px;
 
-    height: 300px;
-    width: 500px;
+    flex: 1 1 320px;
+    min-height: 300px;
+    width: min(100%, 500px);
+    height: auto;
     padding: 30px;
     border-radius: 20px;
 
@@ -84,14 +97,16 @@
     align-items: center;
     justify-content: center;
 
-    height: 300px;
-    width: 500px;
+    flex: 1 1 320px;
+    min-height: 300px;
+    width: min(100%, 500px);
+    height: auto;
     border-radius: 20px;
 
     background-color: #656565;
 
     color: #fff;
-    font-size: 25px;
+    font-size: clamp(1.2rem, 3vw, 1.5625rem);
     font-weight: 700;
 }
 
@@ -109,16 +124,18 @@
     background-color: #EAF4FF;
 
     > h1 {
-        width: 800px;
+        width: min(100%, 800px);
     }
 
     > p {
-        width: 800px;
+        width: min(100%, 800px);
     }
 
     > .memberships {
-        display: flex;
-        gap: 100px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+        width: min(100%, 1200px);
+        gap: clamp(16px, 3vw, 32px);
     }
 }
 

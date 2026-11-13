@@ -4,8 +4,10 @@
     align-items: flex-start;
     gap: 20px;
 
-    width: 350px;
-    height: 500px;
+    width: 100%;
+    min-width: 0;
+    min-height: 500px;
+    height: auto;
     padding: 20px;
 
     border-radius: 20px;

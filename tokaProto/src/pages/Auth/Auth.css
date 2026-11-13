@@ -1,20 +1,25 @@
 .auth-page {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    gap: 20px;
+    gap: clamp(16px, 3vw, 40px);
 
-    height: 90vh;
-    padding: 20px;
+    min-height: min(90vh, 880px);
+    padding: clamp(16px, 3vw, 40px);
 
     background-color: #D7E8F7;
 
     > .left {
-        flex: 1;
+        flex: 1 1 50%;
+        min-width: 0;
     }
     
     > .right {
-        flex: 1;
+        display: grid;
+        flex: 1 1 50%;
+        min-width: 0;
+        place-items: center;
+        padding: clamp(0px, 2vw, 24px);
     }
 
 }
@@ -24,9 +29,9 @@
     flex-direction: column;
     justify-content: space-between;
 
-    height: 100%;
+    min-height: min(680px, calc(90vh - 80px));
 
-    padding: 10px; 
+    padding: clamp(12px, 2vw, 24px);
     border-radius: 30px;
 
     background-image: url('../../assets/image1.jpg');
@@ -68,11 +73,14 @@
 
     > h1 {
         color: var(--white);
-        font-size: 50px;
+        max-width: 15ch;
+        font-size: clamp(2rem, 4vw, 3.125rem);
+        line-height: 1.1;
     }
 
     > p {
         color: var(--white);
+        line-height: 1.55;
     }
 }
 
@@ -96,18 +104,32 @@
 .auth-page .right form {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
+    width: min(100%, 520px);
 
     > .welcome-text {
         color: var(--blue);
         font-weight: 700;
     }
 
+    > h2 {
+        font-size: clamp(1.6rem, 3vw, 2rem);
+    }
+
+    > p {
+        line-height: 1.5;
+    }
+
     > .inputs {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: clamp(10px, 1.5vw, 15px);
     }
+}
+
+.auth-error {
+    color: #a32121;
+    font-weight: 600;
 }
 
 .auth-page .right form .agreement {
@@ -141,14 +163,52 @@ form .form-actions {
     display: flex;
     align-self: center;
     align-items: center;
-    gap: 0px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 8px;
 
     > button {
         color: var(--blue);
-        font-size: 20px;
+        font-size: 1rem;
         font-weight: 700;
 
         background: transparent;
         border: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .auth-page {
+        flex-direction: column;
+        min-height: 0;
+        gap: 18px;
+    }
+
+    .auth-page .left {
+        min-height: 240px;
+    }
+
+    .auth-page .right {
+        padding: 8px 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-page {
+        padding: 12px;
+    }
+
+    .auth-page .left {
+        min-height: 150px;
+        border-radius: 18px;
+    }
+
+    .auth-page .left .bottom-info {
+        display: none;
+    }
+
+    .auth-page .right form {
+        gap: 10px;
     }
 }

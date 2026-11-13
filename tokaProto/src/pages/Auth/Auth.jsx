@@ -10,31 +10,26 @@ export default function Auth() {
     const [selectedForm, setSelectedForm] = useState("login")
 
     function toggleForm() {
-        if (selectedForm === "register") {
-            setSelectedForm("login")
-        } else {
-            setSelectedForm("register")
-        }
+        setSelectedForm((form) => form === "register" ? "login" : "register")
     }
 
     return (
-        <>
-            {/* {selectedForm == "register" ? <RegisterForm /> : <LoginForm />} */}
-            {selectedForm === "register" ? (
-                <RegisterForm toggleForm={toggleForm} />
-            ) : (
-                <LoginForm toggleForm={toggleForm} />
-            )}
-        </>
+        selectedForm === "register" ? (
+            <RegisterForm toggleForm={toggleForm} />
+        ) : (
+            <LoginForm toggleForm={toggleForm} />
+        )
     )
 }
 
 function LoginForm({ toggleForm }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     async function handleSubmit(e) {
         e.preventDefault();
+        setErrorMessage('');
 
         try {
             const response = await api.post('/auth/login', {
@@ -42,22 +37,13 @@ function LoginForm({ toggleForm }) {
                 password: password
             })
 
-            console.log(response.data);
-            alert("Account found successfully.")
-
-            setEmail('');
-            setPassword('');
-
             localStorage.setItem("isLoggedIn", "true");
             localStorage.setItem("userEmail", response.data.email);
             localStorage.setItem("userName", response.data.name);
             localStorage.setItem("initials", response.data.initials);
-            window.location.replace("/");
+            window.location.replace('/');
         } catch (error) {
-            console.error(
-                'Error finding user:',
-                error.response?.data || error.message
-            );
+            setErrorMessage(error.response?.data?.detail || 'Unable to sign in. Please try again.');
         }
     }
 
@@ -88,6 +74,8 @@ function LoginForm({ toggleForm }) {
                         <h2>Login</h2>
                         <p>Continue your fitness and healthy-living journey.</p>
 
+                        {errorMessage && <p className="auth-error" role="alert">{errorMessage}</p>}
+
                         <div className="inputs">
                             <InputBox text="Email address" placeholder="you@example.com" type="email" onChange={(e) => setEmail(e.target.value)} />
                             <InputBox text="Password" placeholder="Create a password" type="password" onChange={(e) => setPassword(e.target.value)} />
@@ -97,7 +85,7 @@ function LoginForm({ toggleForm }) {
 
                         <div className="form-actions">
                             <p>Don't have an account?</p>
-                            <button type="button" onClick={toggleForm} className="form-toggle-btn">Register</button>
+                            <button type="button" onClick={toggleForm} className="form-toggle-btn">Sign up</button>
                         </div>
                     </form>
                 </div>
@@ -111,12 +99,14 @@ function RegisterForm({ toggleForm }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     async function handleSubmit(e) {
         e.preventDefault();
+        setErrorMessage('');
 
         if (password !== confirmPassword) {
-            console.error('Passwords do not match');
+            setErrorMessage('Passwords do not match.');
             return;
         }
 
@@ -129,7 +119,6 @@ function RegisterForm({ toggleForm }) {
             .toUpperCase()
 
         try {
-            // await addUser({ fullname, email, password, confirmPassword });
             const response = await api.post('/auth/register', {
                 name: fullname,
                 initials: initials,
@@ -137,19 +126,13 @@ function RegisterForm({ toggleForm }) {
                 password: password
             })
 
-            console.log(response.data);
-            alert("Account created successfully.")
-
-
-            setFullName('');
-            setEmail('');
-            setPassword('');
-            setConfirmPassword('');
+            localStorage.setItem("isLoggedIn", "true");
+            localStorage.setItem("userEmail", response.data.email);
+            localStorage.setItem("userName", response.data.name);
+            localStorage.setItem("initials", response.data.initials);
+            window.location.replace('/');
         } catch (error) {
-            console.error(
-                'Error adding user:',
-                error.response?.data || error.message
-            );
+            setErrorMessage(error.response?.data?.detail || 'Unable to create your account. Please try again.');
         }
     }
 
@@ -161,7 +144,10 @@ function RegisterForm({ toggleForm }) {
                         Your Fitness journey, your way
                     </div>
                     <div className="bottom-info">
-                        Your Fitness journey, your way
+                        <div className="title">
+                            <h1>Find your community.</h1>
+                            <p>Join ToKa Fitness for practical guidance and support that meets you where you are.</p>
+                        </div>
                     </div>
                 </div>
                 <div className="right">
@@ -169,6 +155,8 @@ function RegisterForm({ toggleForm }) {
                         <span className='welcome-text'>Welcome to ToKa Fitness.</span>
                         <h2>Create account</h2>
                         <p>Start your fitness and healthy-living journey. It's free to join, and everyone is welcome</p>
+
+                        {errorMessage && <p className="auth-error" role="alert">{errorMessage}</p>}
 
                         <div className="inputs">
                             <InputBox text="Full Name" placeholder="Enter your full name" type="text" onChange={(e) => setFullName(e.target.value)} />
@@ -186,7 +174,7 @@ function RegisterForm({ toggleForm }) {
 
                         <div className="form-actions">
                             <p>Already have an account?</p>
-                            <button type="button" onClick={toggleForm} className="form-toggle-btn">Login</button>
+                            <button type="button" onClick={toggleForm} className="form-toggle-btn">Sign in</button>
                         </div>
                     </form>
                 </div>
