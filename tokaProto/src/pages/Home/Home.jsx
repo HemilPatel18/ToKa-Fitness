@@ -24,9 +24,7 @@ export default function Home() {
                     <p>Easy-to-follow guidance gives you clear workout and healthy-living advice, so you can build routines that feel manageable, sustainable, and supportive.</p>
                     <p>A welcoming community supports young people, older adults, and people with disabilities, helping everyone feel included, encouraged, and accountable every step of the way.</p>
                 </div>
-                <div className="image">
-                    Image
-                </div>
+                <div className="image"></div>
             </div>
 
             <div className="memberships-section" id='memberships-section'>
